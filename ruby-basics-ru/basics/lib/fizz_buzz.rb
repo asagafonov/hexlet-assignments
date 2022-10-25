@@ -32,18 +32,20 @@
 #   result.join(' ')
 # end
 
+def divided_by?(num, divider)
+  (num % divider).zero?
+end
+
 def fizz_buzz(start, stop)
   return if start > stop
 
   result = []
   start.upto stop do |num|
-    divided_by_three = (num % 3).zero?
-    divided_by_five = (num % 5).zero?
+    fizz = divided_by?(num, 3) ? 'Fizz' : ''
+    buzz = divided_by?(num, 5) ? 'Buzz' : ''
 
-    fizz = divided_by_three ? 'Fizz' : ''
-    buzz = divided_by_five ? 'Buzz' : ''
-
-    result << fizz.empty? && buzz.empty? ? num.to_s : "#{fizz}#{buzz}"
+    word = fizz.empty? && buzz.empty? ? num.to_s : "#{fizz}#{buzz}"
+    result << word
   end
 
   result.join(' ')
