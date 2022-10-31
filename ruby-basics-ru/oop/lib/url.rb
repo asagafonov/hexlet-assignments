@@ -21,9 +21,10 @@ class Url
     query = uri_url.query
     return {} unless query
 
-    params = query.split('&')
-    pairs = params.map { |p| p.split('=') }
-    pairs.to_h.transform_keys(&:to_sym)
+    query
+      .split('&')
+      .to_h { |p| p.split('=') }
+      .transform_keys(&:to_sym)
   end
 
   def query_param(key, val = nil)

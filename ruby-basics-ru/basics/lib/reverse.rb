@@ -3,7 +3,7 @@
 # BEGIN
 def reverse(str)
   result = ''
-  str.split('').each { |char| result = "#{char}#{result}" }
+  str.chars.each { |char| result = "#{char}#{result}" }
   result
 end
 # END
