@@ -1,0 +1,9 @@
+bulletin_1:
+  title: 'Title 1'
+  body: 'Description 1'
+  published: true
+
+bulletin_2:
+  title: 'Title 2'
+  body: 'Description 2'
+  published: false
