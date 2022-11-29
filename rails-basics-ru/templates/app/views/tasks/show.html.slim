@@ -1,0 +1,8 @@
+h1 Task #{@task.name}
+
+p= @task.description
+p= @task.creator
+
+= link_to 'Edit', edit_task_path(@task)
+= link_to 'Delete', task_path(@task), method: :delete
+= link_to 'Back', tasks_path

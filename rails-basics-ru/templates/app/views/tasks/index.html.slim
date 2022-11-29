@@ -1,0 +1,9 @@
+h1 All tasks
+
+= link_to 'Create', new_task_path
+
+- @tasks.each do |task|
+  h2= link_to task.name, task_path(task)
+  p= task.description 
+  p
+    i= task.created_at
