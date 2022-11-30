@@ -1,0 +1,10 @@
+h1 All posts
+
+= link_to 'New post', new_post_url
+hr
+
+- @posts.each do |post|
+  h2= link_to "#{post.id}: #{post.title}", post_url(post)
+  p= "Summary: #{post.summary }"
+  p= "#{post.published ? 'published' : 'not published'}"
+  hr

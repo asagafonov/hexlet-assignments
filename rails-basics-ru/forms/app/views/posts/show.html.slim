@@ -1,0 +1,9 @@
+h1= "Post #{@post.id}"
+
+p= "Title: #{@post.title}"
+p= "Summary: #{@post.summary}"
+p= "Body: #{@post.body}"
+
+= link_to 'Back to posts', posts_url
+= link_to 'Delete', post_url(@post), method: :delete
+= link_to 'Edit', edit_post_url(@post)
