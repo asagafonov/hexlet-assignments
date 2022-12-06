@@ -3,11 +3,17 @@
 one:
   name: MyString
   description: MyText
+  status: one
+  user: one
 
 two:
   name: MyString
   description: MyText
+  status: two
+  user: two
 
 three:
   name: MyString
   description: MyText
+  status: three
+  user: three
