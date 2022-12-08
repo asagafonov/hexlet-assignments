@@ -1,0 +1,20 @@
+- content_for :title do
+  = @post.title
+p
+  strong.me-2 Body:
+  = @post.body
+/ BEGIN
+
+= link_to 'Leave comment', new_post_comment_path(@post), class: 'btn btn-outline-primary'
+
+- @post.comments.each do |comment|
+  div
+    span.mr-4= comment[:body]
+    span= link_to 'Edit', edit_comment_path(comment), class: 'btn btn-outline-primary mr-2'
+    span= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary mr-2'
+/ END
+hr
+
+.d-flex
+  = link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary mr-2'
+  = link_to 'Back', :back, class: 'btn btn-outline-primary'

@@ -1,0 +1,8 @@
+h1= "Editing comment \##{@comment.id}"
+
+== render "form", comment: @comment, url: edit_comment_path(@comment)
+
+br
+
+div
+  = link_to "Back", :back, class: 'btn btn-outline-primary'
