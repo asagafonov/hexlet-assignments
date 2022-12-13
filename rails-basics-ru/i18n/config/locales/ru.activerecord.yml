@@ -1,0 +1,29 @@
+ru:
+  activerecord:
+    models:
+      # BEGIN
+      
+      comment:
+        count:
+          zero: нет комментариев
+          one: комментарий
+          few: комментария
+          many: комментариев
+          other: комментариев
+      # END
+      post/comment: Комментарий
+
+    attributes:
+        # BEGIN
+        
+        # END
+      post/comment:
+        body: Содержание
+
+    errors:
+      models:
+        post:
+          attributes:
+            # BEGIN
+            alert-danger: Ошибка 
+            # END

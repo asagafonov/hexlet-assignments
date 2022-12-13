@@ -1,0 +1,4 @@
+= simple_form_for(@post) do |f|
+ = f.input :title, label: t('simple_form.placeholders.new_post.post_title')
+ = f.input :body, label: t('simple_form.placeholders.new_post.post_body')
+ = f.submit t('simple_form.placeholders.post_comment.save'), class: 'btn btn-success'

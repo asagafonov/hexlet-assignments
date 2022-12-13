@@ -1,0 +1,37 @@
+en:
+  posts:
+    # BEGIN
+    title: Posts
+    new_post: New Post 
+
+    table:
+      count: Comments count
+      title: Post title
+    
+    create:
+      success: Post was created.
+
+    update:
+      success: Post was updated.
+
+    destroy:
+      success: Post was destroyed.
+
+    edit:
+      title: Edit post
+
+    show:
+      body: Body
+    # END
+
+    comments:
+      add: Add comment
+
+      edit:
+        title: Editing comment
+
+      create:
+        success: Comment was created.
+
+      update:
+        success: Comment was updated.

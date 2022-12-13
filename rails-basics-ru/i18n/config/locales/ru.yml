@@ -1,0 +1,17 @@
+ru:
+  home: Домашняя страница
+  show: Показать
+  edit: Редактировать
+  destroy: Удалить
+  destroy_confirmation: Вы уверены?
+  back: Назад
+  # hexlet_title: © Хекслет, 2022
+  comments: Комментарии
+  home_path: Домой
+  posts_path: Посты
+  layouts:
+    application:
+      hexlet_title: Хекслет
+    shared:
+      nav:
+        hexlet_logo: Хекслет

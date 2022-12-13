@@ -1,0 +1,46 @@
+- content_for :title do
+  / page title (h2)
+  / BEGIN
+  = t('posts.title') 
+  / END
+
+table.table.table-striped.table-hover.mb-5
+  thead
+    tr
+      th{ scope = 'col' } #
+      th{ scope = 'col' }
+        = t('posts.table.title')
+        / BEGIN
+      th{ scope = 'col'} 
+        = t('posts.table.count')
+      th
+      th
+
+  tbody
+    - @posts.each_with_index do |post, i|
+      tr
+        th{ scope = 'row' } = i + 1
+        td = post.title
+        td
+          / comments count
+          / BEGIN
+          = "#{post.comments.count.zero? ? '' : "#{post.comments.count} "}#{t('activerecord.models.comment.count', count: post.comments.count)}"
+          / END
+        td.d-flex
+          / posts links
+          / BEGIN
+          = link_to post_url(post), class: 'btn btn-primary me-2' do 
+            = t('show')
+
+          = link_to post_url(post), method: :delete, class: 'btn btn-primary me-2' do 
+            = t('destroy') 
+            
+          = link_to edit_post_url(post), class: 'btn btn-primary' do 
+            = t('edit')
+          / END
+
+/ new post link
+= link_to new_post_path, id: 'new-post-link', class: 'btn btn-primary' do
+  / BEGIN
+  = t('posts.new_post')
+  / END
