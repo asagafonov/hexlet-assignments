@@ -11,23 +11,19 @@ class SetLocaleMiddleware
   end
 
   def _call(env)
-    @status, @headers, @response = @app.call(env)
+    request = Rack::Request.new(env)
 
-    I18n.locale = extract_locale_from_accept_language_header(@headers)
+    locale = extract_locale_from_accept_language_header(request) || I18n.default_locale
+    I18n.locale = locale.downcase.to_sym
 
-    [@status, @headers, @response]
+    @app.call(env)
   end
 
   private
 
-  def extract_locale_from_accept_language_header(headers)
-    lng_header = headers['HTTP_ACCEPT_LANGUAGE']
-    locale = lng_header.scan(/^[a-z]{2}/).first if lng_header
-    if locale && I18n.available_locales.include?(locale)
-      locale
-    else
-      I18n.default_locale
-    end
+  def extract_locale_from_accept_language_header(req)
+    locale = req.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first
+    I18n.available_locales.map(&:to_s).include?(locale) ? locale : nil
   end
   # END
 end
