@@ -1,21 +1,18 @@
 # frozen_string_literal: true
 
+require 'csv'
+
 namespace :hexlet do
   desc 'Imports users from a csv file'
   task :import_users, [:path] => :environment do |_, args|
     path = args[:path]
-    users = File.read(path).to_s.split("\n").drop(1)
+    users = File.read(path)
 
-    users.each do |user|
-      user_data = user.split(',')
-      first_name, last_name, birthday, email = user_data
+    csv = CSV.parse(users, headers: true)
 
-      User.create(
-        first_name:,
-        last_name:,
-        birthday:,
-        email:
-      )
+    csv.each do |row|
+      parsed_birthday = DateTime.strptime(row['birthday'], '%m/%d/%Y')
+      User.create!(row.to_hash.merge(birthday: parsed_birthday))
     end
   end
 end
