@@ -11,22 +11,21 @@ class HackerTest < ActiveSupport::TestCase
   end
 
   test 'test task' do
-    # stub_request(:get, "#{@uri}/users/sign_up")
-    #   .to_return(
-    #     body: "<html><input type='hidden' name='authenticity_token' value='#{@authenticity_token}'></html>",
-    #     headers: { 'Set-Cookie': @cookie }
-    #   )
+    stub_request(:get, "#{@uri}/users/sign_up")
+      .to_return(
+        body: "<html><input type='hidden' name='authenticity_token' value='#{@authenticity_token}'></html>",
+        headers: { 'Set-Cookie': @cookie }
+      )
 
-    # stub_request(:post, "#{@uri}/users")
-    #   .with(
-    #     body: hash_including({ authenticity_token: @authenticity_token }),
-    #     headers: { cookie: @cookie }
-    #   )
-    #   .to_return(status: 302)
+    stub_request(:post, "#{@uri}/users")
+      .with(
+        body: hash_including({ authenticity_token: @authenticity_token }),
+        headers: { cookie: @cookie }
+      )
+      .to_return(status: 302)
 
-    # response = Hacker.hack('test@test.io', 'password')
+    response = Hacker.hack('test@test.io', 'password')
 
-    # assert response
-    assert true
+    assert response
   end
 end

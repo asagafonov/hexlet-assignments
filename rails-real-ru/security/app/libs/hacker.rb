@@ -19,21 +19,21 @@ class Hacker
     cookie = response.response['set-cookie'].split('; ')[0]
 
     html = Nokogiri::HTML(response.body)
-    token_tag = html.at('input[@name="authenticity_token"]')
-    csrf_token = token_tag.attributes['value'].value
+    csrf_token = html.at('input[@name="authenticity_token"]')['value']
 
     params = {
-      'email': email,
-      'password': password,
-      'token': csrf_token
+      'user[email]': email,
+      'user[password]': password,
+      'user[password_confirmation]': password,
+      'authenticity_token': csrf_token
     }
 
     post_request = Net::HTTP::Post.new URI.join(hostname, '/users')
     post_request.body = URI.encode_www_form(params)
     post_request['Cookie'] = cookie
 
-    request = http.request post_request
-    request.status
+    response = http.request post_request
+    response.code == '302'
     end
     # END
   end
